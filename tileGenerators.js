@@ -1,7 +1,7 @@
 const inverse =
   f =>
-  (...args) =>
-    1 - f(...args);
+    (...args) =>
+      1 - f(...args);
 
 export const constantly = x => () => x;
 export const zig = (r, c) => c;
@@ -47,8 +47,8 @@ export const gradually = (r, c, w, h) => {
 
 export const glitch =
   (f, threshold) =>
-  (...args) =>
-    Math.random() >= threshold ? f(...args) : 0;
+    (...args) =>
+      Math.random() >= threshold ? f(...args) : 0;
 
 export const leftRight = (left, right) => (r, c, w, h) =>
   c < w / 2 ? left(r, c, w, h) : right(r, c, w, h);
@@ -58,5 +58,5 @@ export const topBottom = (top, bottom) => (r, c, w, h) =>
 
 export const wild =
   (f, cfg) =>
-  (...args) =>
-    cfg[f(...args) % cfg.length];
+    (...args) =>
+      cfg[f(...args) % cfg.length];
