@@ -16,6 +16,11 @@ import {
   topBottom,
   quarterLand,
   wild,
+  inverseQuarterLand,
+  diagonallyInverse,
+  rowHalfAndHalf,
+  rowHalfAndHalfInverse,
+  constantly,
 } from './tileGenerators.js';
 
 // Vary this. Try any or all of the above
@@ -38,10 +43,27 @@ const tg6 = wild(classicSquare, [1, 1, 0, 0]);
 
 // The second parameter controls the "glitchiness"
 // The values are between 0 and 1, 0 being no glitch and 1 being all glitchy
-const tg7 = glitch(classicAlternate, 0.05);
+const tg7 = glitch(classicSquare, 0.05);
 
 // Try combining glitching, wild and topBottom/leftRight in various combinations
 
 const [width, height] = Deno.args.map(x => +x);
 
-console.log(generateTiles(width, height, tg3));
+// console.log(generateTiles(width, height, tg1));
+// console.log(generateTiles(width, height, tg2));
+// console.log(generateTiles(width, height, tg3));
+// console.log(generateTiles(width, height, tg4));
+// console.log(generateTiles(width, height, tg5));
+// console.log(generateTiles(width, height, tg6));
+// console.log(generateTiles(width, height, tg7));
+// console.log(generateTiles(width, height, halfAndHalf));
+// console.log(generateTiles(width, height, halfAndHalfInverse));
+// console.log(generateTiles(width, height, rowHalfAndHalf));
+// console.log(generateTiles(width, height, rowHalfAndHalfInverse));
+// console.log(generateTiles(width, height, quarterLand));
+// console.log(generateTiles(width, height, inverseQuarterLand));
+// console.log(generateTiles(width, height, diagonally));
+// console.log(generateTiles(width, height, diagonallyInverse));
+// console.log(generateTiles(width, height, circle));
+// console.log(generateTiles(width, height, borderLands));
+console.log(generateTiles(width, height, gradually)); 
