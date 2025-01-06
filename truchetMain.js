@@ -22,6 +22,7 @@ import {
   rowHalfAndHalfInverse,
   constantly,
 } from './tileGenerators.js';
+import { symmetry } from './tileGeneratorsByMe.js';
 
 // Vary this. Try any or all of the above
 // Also try each algorithm with a variety of widths and heights
@@ -66,4 +67,12 @@ const [width, height] = Deno.args.map(x => +x);
 // console.log(generateTiles(width, height, diagonallyInverse));
 // console.log(generateTiles(width, height, circle));
 // console.log(generateTiles(width, height, borderLands));
-console.log(generateTiles(width, height, gradually)); 
+// console.log(generateTiles(width, height, gradually)); 
+
+const tg8 = symmetry(halfAndHalf, halfAndHalfInverse);
+// console.log(generateTiles(width * 2, height, tg8));
+
+
+const tg9 = symmetry(quarterLand, inverseQuarterLand);
+// console.log(generateTiles(width, height, quarterLand));
+console.log(generateTiles(width, height, tg9));
