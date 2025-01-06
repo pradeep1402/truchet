@@ -11,8 +11,8 @@ export const mirrorRight = (pattern) => {
   const mirroredPattern = [];
 
   for (const line of lines) {
-    const a = line + " " + line.split("").reverse().join("");
-    mirroredPattern.push(a);
+    const newLine = line + " " + line.split("").reverse().join("");
+    mirroredPattern.push(newLine);
   }
 
   return mirroredPattern.join("\n");
