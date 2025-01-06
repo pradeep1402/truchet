@@ -1,14 +1,9 @@
-import { defaultTileSet, generateTiles } from './truchet.js';
+import { generateTiles } from './truchet.js';
 import {
-  borderLands,
-  circle,
   classicAlternate,
   classicSquare,
-  classicTruchet,
-  gradually,
   halfAndHalf,
   halfAndHalfInverse,
-  diagonally,
   zag,
   zig,
   glitch,
@@ -17,12 +12,14 @@ import {
   quarterLand,
   wild,
   inverseQuarterLand,
-  diagonallyInverse,
+  max,
+  min,
+  constantly,
+  classicTruchet,
   rowHalfAndHalf,
   rowHalfAndHalfInverse,
-  constantly,
 } from './tileGenerators.js';
-import { symmetry } from './tileGeneratorsByMe.js';
+import { commbinedPatterns, mirror, mirrorDown, mirrorRight } from './tileGeneratorsByMe.js';
 
 // Vary this. Try any or all of the above
 // Also try each algorithm with a variety of widths and heights
@@ -68,11 +65,20 @@ const [width, height] = Deno.args.map(x => +x);
 // console.log(generateTiles(width, height, circle));
 // console.log(generateTiles(width, height, borderLands));
 // console.log(generateTiles(width, height, gradually)); 
+// console.log(generateTiles(width, height, max));
+// console.log(generateTiles(width, height, min));
+// console.log(generateTiles(width, height, classicTruchet));
 
-const tg8 = symmetry(halfAndHalf, halfAndHalfInverse);
-// console.log(generateTiles(width * 2, height, tg8));
+const tg8 = commbinedPatterns(halfAndHalf, halfAndHalfInverse);
+const tg9 = commbinedPatterns(quarterLand, inverseQuarterLand);
+const tg10 = commbinedPatterns(rowHalfAndHalf, rowHalfAndHalfInverse);
 
 
-const tg9 = symmetry(quarterLand, inverseQuarterLand);
-// console.log(generateTiles(width, height, quarterLand));
-console.log(generateTiles(width, height, tg9));
+// console.log(generateTiles(width, height, tg8));
+// console.log(generateTiles(width, height, tg9));
+// console.log(mirrorRight(generateTiles(width, height, tg9)));
+// console.log(mirrorRight(generateTiles(width, height, tg8)));
+// console.log(mirrorDown(generateTiles(width, height, tg8)));
+// console.log(mirrorDown(generateTiles(width, height, tg9)));
+console.log(mirror(generateTiles(width, height, tg8)));
+// console.log(mirror(generateTiles(width, height, tg9)));
